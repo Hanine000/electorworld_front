@@ -8,9 +8,9 @@ import "./SignUp.css";
 
 function Signup() {
   const [formData, setFormData] = useState({
-    name: "",
+    user_name: "",
     email: "",
-    password: ""
+    password_hash: ""
   });
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -21,13 +21,18 @@ function Signup() {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/signup", formData);
+      const response = await axios.post("http://localhost:5000/api/users", formData);
       
-      localStorage.setItem("token", response.data.token);
+      // Optionally store token if returned by backend
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token);
+      }
+
       toast.success("Account created successfully!");
       navigate("/");
-      
+
     } catch (err) {
+      console.error(err);
       if (err.response) {
         toast.error(err.response.data.message || "Registration failed");
       } else if (err.request) {
@@ -52,7 +57,7 @@ function Signup() {
           placeholder="Full Name"
           className="details"
           value={formData.name}
-          onChange={(e) => setFormData({...formData, name: e.target.value})}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           required
         />
         <input
@@ -61,7 +66,7 @@ function Signup() {
           placeholder="Email"
           className="details"
           value={formData.email}
-          onChange={(e) => setFormData({...formData, email: e.target.value})}
+          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           required
         />
         <div className="password-wrapper">
@@ -71,13 +76,10 @@ function Signup() {
             placeholder="Password"
             className="details"
             value={formData.password}
-            onChange={(e) => setFormData({...formData, password: e.target.value})}
+            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             required
           />
-          <span
-            className="icon"
-            onClick={() => setPasswordVisible(!passwordVisible)}
-          >
+          <span className="icon" onClick={() => setPasswordVisible(!passwordVisible)}>
             {passwordVisible ? <FaEyeSlash /> : <FaEye />}
           </span>
         </div>
