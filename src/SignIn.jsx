@@ -15,31 +15,32 @@ function Signin() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+  const handleChange = ({ target: { name, value } }) => {
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
+    console.log("Submitting login:", formData); 
+
     try {
-      const response = await axios.post("http://localhost:5173/api/users/login", {
+      const response = await axios.post("http://localhost:5000/api/users/login", {
         email: formData.email,
-        password: formData.password
+        password: formData.password 
       });
       
-      localStorage.setItem("token", response.data.token);
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-      
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+      }
+
       toast.success("Login successful!");
       navigate("/");
       
     } catch (err) {
+      console.error(err);
       if (err.response) {
         toast.error(err.response.data.message || "Invalid email or password");
       } else if (err.request) {

@@ -8,33 +8,43 @@ import "./SignUp.css";
 
 function Signup() {
   const [formData, setFormData] = useState({
-    user_name: "",
+    username: "", 
     email: "",
-    password_hash: ""
+    name: "",
+    password: "",
   });
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+    console.log("Submitting registration:", formData); 
     try {
-      const response = await axios.post("http://localhost:5000/api/users", formData);
-      
-      // Optionally store token if returned by backend
+     
+      const response = await axios.post("http://localhost:5000/api/users", {
+        password_hash: formData.password,
+        email: formData.email,
+        username: formData.username
+      });
+
+  
       if (response.data.token) {
         localStorage.setItem("token", response.data.token);
       }
 
       toast.success("Account created successfully!");
       navigate("/");
-
     } catch (err) {
       console.error(err);
       if (err.response) {
-        toast.error(err.response.data.message || "Registration failed");
+        
+        toast.error(err.response.data.error || "Registration failed");
       } else if (err.request) {
         toast.error("Server not responding. Please try again later.");
       } else {
@@ -53,11 +63,20 @@ function Signup() {
       <form className="sign-up-form" onSubmit={handleSubmit}>
         <input
           type="text"
+          name="username" 
+          placeholder="Username"
+          className="details"
+          value={formData.username}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
           name="name"
           placeholder="Full Name"
           className="details"
           value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          onChange={handleChange}
           required
         />
         <input
@@ -66,7 +85,7 @@ function Signup() {
           placeholder="Email"
           className="details"
           value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          onChange={handleChange}
           required
         />
         <div className="password-wrapper">
@@ -76,10 +95,13 @@ function Signup() {
             placeholder="Password"
             className="details"
             value={formData.password}
-            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            onChange={handleChange}
             required
           />
-          <span className="icon" onClick={() => setPasswordVisible(!passwordVisible)}>
+          <span
+            className="icon"
+            onClick={() => setPasswordVisible(!passwordVisible)}
+          >
             {passwordVisible ? <FaEyeSlash /> : <FaEye />}
           </span>
         </div>
