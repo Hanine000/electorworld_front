@@ -1,7 +1,7 @@
-import "./Footer.css";
-import insta from "./assets/instagram.png";
-import FB from "./assets/facebook.png";
-import Gmail from "./assets/gmail.png";
+import "../styles/Footer.css";
+import insta from "../assets/instagram.png";
+import FB from "../assets/facebook.png";
+import Gmail from "../assets/gmail.png";
 
 
 const Footer = () => {

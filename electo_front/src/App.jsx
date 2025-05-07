@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
-import Footer from "./Footer.jsx";
-import Signin from "./SignIn.jsx";
-import Signup from "./SignUp.jsx";
-import Home from "./Home.jsx";
-import ProductsPage from "./ProductsPage.jsx";
-import Header from "./Header.jsx";
+import "./styles/App.css";
+import Footer from "./compoents/Footer.jsx";
+import Signin from "./pages/SignIn.jsx";
+import Signup from "./pages/SignUp.jsx";
+import Home from "./pages/Home.jsx";
+import ProductsPage from "./pages/ProductsPage.jsx";
+import Header from "./compoents/Header.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import PDpage from "./PDpage.jsx";
-import ScrollToTop from "./ScrollToTop";
+import PDpage from "./pages/PDpage.jsx";
+import ScrollToTop from "./compoents/ScrollToTop.jsx";
 
 function App() {
   return (

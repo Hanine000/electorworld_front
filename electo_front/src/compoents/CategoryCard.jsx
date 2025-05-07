@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./CategoryCard.css"; 
+import "../styles/CategoryCard.css"; 
 function CategoryCard({ category, logo }) {
   return (
     <Link to={`/products/category/${category.toLowerCase().replace(/\s+/g, "-")}`}>

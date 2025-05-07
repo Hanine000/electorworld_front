@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./ProductDetails.css";
+import "../styles/ProductDetails.css";
 
 const ProductDetails = ({ product }) => {
   const [selectedImage, setSelectedImage] = useState(product.images[0]);

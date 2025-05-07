@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Header.css";
-import image from "./assets/logo1.jpg";
-import like from "./assets/heart-.png";
-import cart from "./assets/shopping-cart.png";
-import profile from "./assets/man.png";
+import "../styles/Header.css";
+import image from "../assets/logo1.jpg";
+import like from "../assets/heart-.png";
+import cart from "../assets/shopping-cart.png";
+import profile from "../assets/man.png";
 import Search from "./Search.jsx";
-import bars from "./assets/bars.jpg";
+import bars from "../assets/bars.jpg";
 
 function Header() {
   const navigate = useNavigate();

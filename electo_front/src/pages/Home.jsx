@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CategoryCard from "./CategoryCard.jsx";
-import ProductCard from "./ProductCard.jsx"; 
-import Phone from "./assets/phone.jpeg";
-import Laptop from "./assets/laptop.png";
-import Desktop from "./assets/desktopComputer.jpeg";
-import Monitors from "./assets/monitors.png";
-import Accessories from "./assets/accessories.jpeg";
-import Tablets from "./assets/tablets.jpg";
-import "./Home.css"; 
+import CategoryCard from "../compoents/CategoryCard.jsx";
+import ProductCard from "../pages/ProductCard.jsx"; 
+import Phone from "../assets/phone.jpeg";
+import Laptop from "../assets/laptop.png";
+import Desktop from "../assets/desktopComputer.jpeg";
+import Monitors from "../assets/monitors.png";
+import Accessories from "../assets/accessories.jpeg";
+import Tablets from "../assets/tablets.jpg";
+import "../styles/Home.css"; 
 import { toast } from "react-toastify";
 
 function Home() {

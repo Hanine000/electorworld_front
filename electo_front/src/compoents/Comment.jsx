@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Comment.css';
+import '../styles/Comment.css';
 
 const ProductComments = ({ productId }) => {
   const [comments, setComments] = useState([]);

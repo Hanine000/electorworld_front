@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import ProductDetails from "./ProductDetails.jsx";
-import "./ProductDetails.css";
-import Comment from "./Comment.jsx";
+import "../styles/ProductDetails.css";
+import Comment from "../compoents/Comment.jsx";
 import { toast } from "react-toastify";
 
 function PDpage() {
