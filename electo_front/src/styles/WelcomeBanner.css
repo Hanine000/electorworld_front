@@ -1,0 +1,59 @@
+/* WelcomeBanner.css */
+
+/* Container for the Welcome Banner */
+.welcome-banner {
+    position: relative;
+    width: 100%;
+    transition: opacity 0.5s ease-out; /* Smooth transition for hiding the banner */
+  }
+  
+  /* Hide the banner when scrolled */
+  .welcome-banner.scrolled {
+    opacity: 0; /* Make the banner invisible */
+    pointer-events: none; /* Disable interactions */
+  }
+  
+  /* HeroSection styles */
+  .hero-section {
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    background: linear-gradient(120deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('https://img.freepik.com/premium-photo/cyber-monday-fitness-tech-email-header-featuring-smartwatches-trackers-wireless-headphones_416256-121416.jpg?ga=GA1.1.2145641979.1739144303&semt=ais_hybrid&w=740'); /* Updated background image */
+    background-size: cover; /* Ensure the image covers the entire section */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    z-index: 1;
+  }
+  
+  /* Hero content text styles */
+  .hero-content h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Add shadow to make text stand out */
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Add shadow to make text stand out */
+  }
+  
+  /* Optional: Adding an overlay to make the text stand out more */
+  .hero-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: -1;
+  }
+  

@@ -34,6 +34,16 @@ function Header() {
     };
   }, []);
 
+  // Categories for the sidebar
+  const categories = [
+    "Cell phones",
+    "Laptops",
+    "Desktop computers",
+    "Monitors",
+    "Accessories",
+    "Tablets"
+  ];
+
   return (
     <>
       {/* Sidebar */}
