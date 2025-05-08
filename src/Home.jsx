@@ -39,7 +39,7 @@ function Home() {
     <>
       <h1>Categories</h1>
       <div className="categories">
-        <CategoryCard category="Cell phones" logo={Phone} />
+        <CategoryCard category="Mobile Phones" logo={Phone} />
         <CategoryCard category="Laptops" logo={Laptop} />
         <CategoryCard category="Desktop computers" logo={Desktop} />
         <CategoryCard category="Monitors" logo={Monitors} />
