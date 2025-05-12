@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import "./styles/App.css";
 import Footer from "./compoents/Footer.jsx";
 import Signin from "./pages/SignIn.jsx";
@@ -10,25 +10,25 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PDpage from "./pages/PDpage.jsx";
 import ScrollToTop from "./compoents/ScrollToTop.jsx";
+import WelcomePage from "./pages/WelcomePage.jsx"; // import your welcome page
 
-function App() {
+function AppWrapper() {
+  const location = useLocation();
+  const hideUIOnPaths = ['/']; // hide sidebar & footer here
+
   return (
     <>
-    <Router>
-    <ScrollToTop />
-    <div className="main-page">
-      <Header /> 
-           
-        <Routes> 
-          <Route path="/" element={<Home />} />
-          <Route path="/Signin" element={<Signin />} />
-          <Route path="/Signup" element={<Signup />} />
-          <Route path="/products/category/:category" element={<ProductsPage />} />
-          <Route path="/products/details/:id" element={<PDpage />} />
-        </Routes>      
-        <Footer />
-        
-      </div>
+      {!hideUIOnPaths.includes(location.pathname) && <Header />}
+      <Routes>
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/homepage" element={<Home />} />
+        <Route path="/Signin" element={<Signin />} />
+        <Route path="/Signup" element={<Signup />} />
+        <Route path="/products/category/:category" element={<ProductsPage />} />
+        <Route path="/products/details/:id" element={<PDpage />} />
+      </Routes>
+      {!hideUIOnPaths.includes(location.pathname) && <Footer />}
+
       <ToastContainer
         position="top-center"
         autoClose={3000}
@@ -40,8 +40,16 @@ function App() {
         draggable
         pauseOnHover
       />
-    </Router>
     </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <AppWrapper />
+    </Router>
   );
 }
 
