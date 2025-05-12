@@ -3,11 +3,11 @@ import axios from "axios";
 import CategoryCard from "../compoents/CategoryCard.jsx";
 import ProductCard from "../pages/ProductCard.jsx";
 import Phone from "../assets/iphone.png";
-import Laptop from "../assets/ipadd.webp";
-import Desktop from "../assets/lap.webp";
-import Monitors from "../assets/headphone.jpg";
-import Accessories from "../assets/manette.webp";
-import Tablets from "../assets/camera.jpg";
+import tablet from "../assets/ipadd.webp";
+import laptop from "../assets/lap.webp";
+import headphone from "../assets/headphone.jpg";
+import manette from "../assets/manette.webp";
+import camera from "../assets/camera.jpg";
 import "../styles/Home.css";
 import { toast } from "react-toastify";
 
@@ -37,11 +37,11 @@ function Home() {
       <h1>Categories</h1>
       <div className="categories">
         <CategoryCard category="Mobile Phones" logo={Phone} />
-        <CategoryCard category="Tablets & iPads" logo={Laptop} />
-        <CategoryCard category="Laptops & Computers" logo={Desktop} />
-        <CategoryCard category="Gaming" logo={Monitors} />
-        <CategoryCard category="Audio & Headphones" logo={Accessories} />
-        <CategoryCard category="Cameras & Photography" logo={Tablets} />
+        <CategoryCard category="Tablets & iPads" logo={tablet} />
+        <CategoryCard category="Laptops & Computers" logo={laptop} />
+        <CategoryCard category="Gaming" logo={manette} />
+        <CategoryCard category="Audio & Headphones" logo={headphone} />
+        <CategoryCard category="Cameras & Photography" logo={camera} />
       </div>
 
       <h1>All Items</h1>
