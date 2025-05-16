@@ -10,9 +10,9 @@ function ProductCard({ id, name, image, price }) {
         <h3 className="product-name">{name}</h3>
         <div className="product-price">{price} DA</div>
         <div className="button-row">
-          <button className="btn buy">
-            <FiShoppingCart style={{ marginRight: "6px" }} />
-            Buy Now
+          <button className="btn buy">Buy Now</button>
+          <button className="btn cart">
+            <FiShoppingCart />
           </button>
         </div>
       </div>

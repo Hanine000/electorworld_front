@@ -49,7 +49,7 @@ body {
 
 
 
-/* ===== Features تحت Carousel ===== */
+/* ===== Features ===== */
 .features-container {
   display: flex;
   justify-content: center;
@@ -89,17 +89,20 @@ body {
 }
 
 /* ===== Products Section ===== */
+
 .AllItems {
   padding: 0 20px 40px;
+  max-width: 1200px; 
+  margin: 0 auto;    
 }
 
 .item-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); 
+  gap: 16px;  
   margin-top: 20px;
+  justify-content: center; 
 }
-
 /* ===== Pagination ===== */
 .pagination-controls {
   display: flex;
@@ -132,18 +135,23 @@ body {
 .pagination-controls span {
   font-weight: bold;
   font-size: 18px;
+  color: white;
 }
 
 /* ===== Brands Section ===== */
+h2 {
+  color: white;
+}
+
 .brands-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 40px;
-  padding: 30px 20px 60px;
+  padding: 20px 20px 20px;
   flex-wrap: wrap;
   background-color: #f9f9f9;
-  border-radius: 12px;
+  border-radius: 20px;
   margin: 0 20px 60px;
 }
 
@@ -213,4 +221,5 @@ body {
     font-size: 16px;
   }
 }
+
 

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import React, { useState } from "react";
+import  { useState } from "react";
 import "./styles/App.css";
 import Footer from "./compoents/Footer.jsx";
 import Signin from "./pages/SignIn.jsx";

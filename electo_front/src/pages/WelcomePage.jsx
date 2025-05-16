@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/WelcomeBanner.css";
 import w from "../assets/w-img.jpg";
 
+
 function WelcomePage() {
   const navigate = useNavigate();
 
@@ -11,9 +12,14 @@ function WelcomePage() {
     <div className="welcome-container">
     
       {/* Logo Section */}
-      <div className="logo-text">
-        <h2>ElectroWorld</h2>
-      </div>
+      
+        <div className="logo-text">
+          <h2>ElectroWorld</h2>
+        </div>
+      
+
+
+      
       <div className="left-side">
         <video
           className="welcome-video"
