@@ -18,15 +18,16 @@ function Header({ searchTerm, setSearchTerm }) {
   const isWelcomePage = location.pathname === "/";
 
   const handleSearch = (term) => {
-    setSearchTerm(term); 
+    setSearchTerm(term);
     const currentPath = location.pathname;
-
     if (currentPath.startsWith("/products/category/")) {
       const params = new URLSearchParams(location.search);
       params.set("search", term);
       navigate(`${currentPath}?${params.toString()}`, { replace: true });
     } else {
-      navigate(`/products/category/all?search=${encodeURIComponent(term)}`, { replace: true });
+      navigate(`/products/category/all?search=${encodeURIComponent(term)}`, {
+        replace: true,
+      });
     }
   };
 
@@ -58,7 +59,6 @@ function Header({ searchTerm, setSearchTerm }) {
 
   return (
     <>
-      {/* Sidebar */}
       {!isWelcomePage && (
         <>
           <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
@@ -77,49 +77,64 @@ function Header({ searchTerm, setSearchTerm }) {
               ))}
             </ul>
           </div>
-
           {isSidebarOpen && (
-            <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)} />
+            <div
+              className="sidebar-overlay"
+              onClick={() => setSidebarOpen(false)}
+            />
           )}
         </>
       )}
 
-      {/* Navbar */}
-      <div className="navbar">
-        {!isWelcomePage && (
-          <img
-            src={bars}
-            className="img"
-            onClick={() => setSidebarOpen(!isSidebarOpen)}
-            alt="Menu"
-          />
-        )}
-        <Link to="/">
-          <div className="logo_container">
-            <img src={image} className="logo_style" alt="ElectroWorld Logo" />
-            <h2 className="logo_text">ElectroWorld</h2>
-          </div>
-        </Link>
-
-        <Search onSearch={handleSearch} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-
-        <div className="icons">
-          <img src={like} className="img" alt="Wishlist" />
-          <img src={cart} className="img" alt="Cart" />
-          <div className="profile-container" ref={dropdownRef}>
+      <div className="header-wrapper">
+        <div className="header-top">
+          {!isWelcomePage && (
             <img
-              src={profile}
-              className="img profile-icon"
-              alt="Profile"
-              onClick={() => setDropdownOpen(!isDropdownOpen)}
+              src={bars}
+              className="img"
+              onClick={() => setSidebarOpen(!isSidebarOpen)}
+              alt="Menu"
             />
-            {isDropdownOpen && (
-              <div className="profile-dropdown">
-                <Link to="/signin">Sign In</Link>
-                <Link to="/signup">Sign Up</Link>
-              </div>
-            )}
+          )}
+
+          <Link to="/">
+            <div className="logo_container">
+              <img src={image} className="logo_style" alt="ElectroWorld Logo" />
+              <h2 className="logo_text">ElectroWorld</h2>
+            </div>
+          </Link>
+
+          {/* فاصل يدفع الأيقونات لأقصى اليمين */}
+          <div style={{ flexGrow: 1 }}></div>
+
+          <div className="icons">
+            <img src={like} className="img" alt="Wishlist" />
+            <img src={cart} className="img" alt="Cart" />
+            <div className="profile-container" ref={dropdownRef}>
+              <img
+                src={profile}
+                className="img profile-icon"
+                alt="Profile"
+                onClick={() => setDropdownOpen(!isDropdownOpen)}
+              />
+              {isDropdownOpen && (
+                <div className="profile-dropdown">
+                  <Link to="/signin">Sign In</Link>
+                  <Link to="/signup">Sign Up</Link>
+                </div>
+              )}
+            </div>
           </div>
+        </div>
+
+        <div className="header-bottom">
+          
+            <Search
+              onSearch={handleSearch}
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+         
         </div>
       </div>
     </>
@@ -127,3 +142,4 @@ function Header({ searchTerm, setSearchTerm }) {
 }
 
 export default Header;
+

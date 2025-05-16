@@ -1,9 +1,10 @@
+
 .products-page-container {
   display: flex;
   gap: 20px;
   width: 100%;
   padding: 20px;
-  background-color: #000000;
+  background-color: #1f1f1fad;
   min-height: 100vh;
   box-sizing: border-box;
 }
