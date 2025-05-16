@@ -1,13 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/Search.css";
 
-const Search = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-
+const Search = ({ onSearch, searchTerm, setSearchTerm }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      onSearch?.(searchTerm.trim());
+      onSearch(searchTerm.trim());
     }
   };
 

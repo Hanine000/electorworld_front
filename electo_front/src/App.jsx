@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import React, { useState } from "react";
 import "./styles/App.css";
 import Footer from "./compoents/Footer.jsx";
 import Signin from "./pages/SignIn.jsx";
@@ -10,23 +11,32 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PDpage from "./pages/PDpage.jsx";
 import ScrollToTop from "./compoents/ScrollToTop.jsx";
-import WelcomePage from "./pages/WelcomePage.jsx"; // import your welcome page
+import WelcomePage from "./pages/WelcomePage.jsx";
 
 function AppWrapper() {
   const location = useLocation();
-  const hideUIOnPaths = ['/']; // hide sidebar & footer here
+  const hideUIOnPaths = ['/'];
+  
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <>
-      {!hideUIOnPaths.includes(location.pathname) && <Header />}
+      {!hideUIOnPaths.includes(location.pathname) && (
+        <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      )}
+
       <Routes>
         <Route path="/" element={<WelcomePage />} />
-        <Route path="/homepage" element={<Home />} />
+        <Route path="/homepage" element={<Home searchTerm={searchTerm} />} />
         <Route path="/Signin" element={<Signin />} />
         <Route path="/Signup" element={<Signup />} />
-        <Route path="/products/category/:category" element={<ProductsPage />} />
+        <Route
+          path="/products/category/:category"
+          element={<ProductsPage searchTerm={searchTerm} />}
+        />
         <Route path="/products/details/:id" element={<PDpage />} />
       </Routes>
+
       {!hideUIOnPaths.includes(location.pathname) && <Footer />}
 
       <ToastContainer

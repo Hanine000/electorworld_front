@@ -1,24 +1,83 @@
-.product-list{
-    height: 100%;
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding: 30px;
-  }
-  a{
-    text-decoration: none;
-    color: black;
-  }
-  .products-page{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    background-color: black;
-    text-align: center;
-  }
+.products-page-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+  background-color: #000000;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.filters-sidebar {
+  width: 250px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+  margin-top: 70px;
+}
+
+.filter-group h4 {
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 1px solid #41befd;
+  padding-bottom: 8px;
+}
+
+.filter-group label {
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+}
+
+.filter-group input[type="checkbox"],
+.filter-group input[type="radio"] {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.product-list {
+ display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.product-content {
+  flex: 1;
+  min-width: 0; 
+  padding: 20px;
+  padding-right: 20px; 
+  padding-left: 20px;  
+}
+
+
+
+.product-content h2 {
+  font-family: Arial, sans-serif;
+  color: #222;
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  line-height: 1.2; 
+  text-align: center;
+  
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  background-color: #c4c2c273;
+  border: 1px solid #51abea;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.product-list p {
+  font-family: Arial, sans-serif;
+  color: #b6b5b5;
+  text-align: center;
+}

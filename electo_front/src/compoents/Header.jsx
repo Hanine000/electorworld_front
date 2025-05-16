@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "../styles/Header.css";
-import image from "../assets/logo1.jpg";
+import image from "../assets/logo2.png";
 import like from "../assets/heart-.png";
 import cart from "../assets/shopping-cart.png";
 import profile from "../assets/man.png";
 import Search from "./Search.jsx";
 import bars from "../assets/bars.jpg";
 
-function Header() {
+function Header({ searchTerm, setSearchTerm }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -17,10 +17,16 @@ function Header() {
 
   const isWelcomePage = location.pathname === "/";
 
-  const handleCategoryChange = (event) => {
-    const selectedCategory = event.target.value;
-    if (selectedCategory) {
-      navigate(`/products/${selectedCategory}`);
+  const handleSearch = (term) => {
+    setSearchTerm(term); 
+    const currentPath = location.pathname;
+
+    if (currentPath.startsWith("/products/category/")) {
+      const params = new URLSearchParams(location.search);
+      params.set("search", term);
+      navigate(`${currentPath}?${params.toString()}`, { replace: true });
+    } else {
+      navigate(`/products/category/all?search=${encodeURIComponent(term)}`, { replace: true });
     }
   };
 
@@ -60,7 +66,11 @@ function Header() {
             <ul>
               {categories.map((category) => (
                 <li key={category}>
-                  <Link to={`/products/category/${category.toLowerCase().replace(/\s+/g, "-")}`}>
+                  <Link
+                    to={`/products/category/${category
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`}
+                  >
                     {category}
                   </Link>
                 </li>
@@ -90,7 +100,9 @@ function Header() {
             <h2 className="logo_text">ElectroWorld</h2>
           </div>
         </Link>
-        <Search />
+
+        <Search onSearch={handleSearch} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+
         <div className="icons">
           <img src={like} className="img" alt="Wishlist" />
           <img src={cart} className="img" alt="Cart" />

@@ -1,10 +1,11 @@
 :root {
   --primary-color: #0b1b32;
   --secondary-color: #00bfff;
-  --background-color: #1f2833;
+  --background-color: #909192;
   --text-color: #ffffff;
   --accent-color: #ffea75;
 }
+
 
 body h1 {
   color: white;
@@ -13,12 +14,12 @@ body h1 {
 .navbar {
   height: 80px;
   width: 100%;
-  background-color: black;
+  background-color: #1f1f1f;
   padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  border-bottom: 2px solid hsl(0, 100%, 31%);
+  border-bottom: 2px solid  rgb(43, 205, 238);
   box-sizing: border-box;
 }
 
@@ -29,14 +30,14 @@ body h1 {
 }
 
 .logo_style {
-  width: 70px;
-  height: 60px;
+  width: 50px;
+  height: 40px;
 }
 
 .logo_text {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
-  color: hsl(0, 100%, 31%);
+  color: white;
 }
 
 .link a {
@@ -50,7 +51,7 @@ body h1 {
 
 .link a:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  border: 0.1em solid white
+  border: 0.1em solid white;
 }
 
 .img {
@@ -117,14 +118,13 @@ body h1 {
 }
 
 /* Sidebar Styles */
-/* Sidebar container */
 .sidebar {
   position: fixed;
   top: 0;
   left: -260px; /* Hidden by default */
   width: 260px;
   height: 100vh;
-  background-color: #121212;
+  background-color: #1f1f1f;
   color: white;
   transition: left 0.3s ease-in-out;
   z-index: 1100;
@@ -138,19 +138,17 @@ body h1 {
   left: 0;
 }
 
-/* Sidebar header */
 .sidebar h3 {
   margin: 0 auto 20px;
   font-size: 1.8rem;
-  color: hsl(0, 100%, 31%);
+  color:  rgba(43, 205, 238, 0.741);
   font-weight: bold;
-  border-bottom: 2px solid hsl(0, 100%, 31%);
+  border-bottom: 2px solid  rgb(43, 205, 238);
   padding-bottom: 10px;
   width: 80%;
   text-align: center;
 }
 
-/* List styling */
 .sidebar ul {
   list-style: none;
   padding: 0;
@@ -163,31 +161,28 @@ body h1 {
   align-items: center;
 }
 
-/* List items */
 .sidebar li {
   width: 85%;
   padding: 12px 20px;
   text-align: center;
   border-radius: 10px;
-  background-color: #1f1f1f;
+  background-color: #414141bb;
   transition: background 0.3s, transform 0.2s;
   font-size: 1rem;
 }
+
 .sidebar li:hover {
   background-color: #333;
   transform: scale(1.03);
-  border: 2px solid hsl(0, 100%, 31%);
+  border: 2px solid  rgba(43, 205, 238, 0.329);
 }
 
-
-/* Links inside sidebar */
 .sidebar a {
   color: white;
   text-decoration: none;
   display: block;
 }
 
-/* Overlay when sidebar is open */
 .sidebar-overlay {
   position: fixed;
   top: 0;
@@ -197,10 +192,6 @@ body h1 {
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
-
-
-
-
 
 .simple-header {
   justify-content: flex-start;

@@ -7,16 +7,19 @@
   background-color: black;
   text-align: center;
 }
-.item-list{
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   padding: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 70px;
+padding-right: 70px;
+
 }
+
+
 .pagination-controls button.active {
   background-color: hsl(0, 100%, 31%);
   color: white;

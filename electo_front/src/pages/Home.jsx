@@ -11,17 +11,18 @@ import camera from "../assets/camera.jpg";
 import "../styles/Home.css";
 import { toast } from "react-toastify";
 
-function Home() {
+function Home({ searchTerm }) {
   const [products, setProducts] = useState([]);
-  const [pagination, setPagination] = useState({});
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [pagination, setPagination] = useState({ pages: 1, perPage: 12 });
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/products?page=${page}&limit=12`);
-        setProducts(response.data.products);
-        setPagination(response.data.pagination);
+        const response = await axios.get(`http://localhost:5000/api/products?limit=1000`);
+        const allProducts = response.data.products;
+        setProducts(allProducts);
       } catch (error) {
         console.error("Error fetching products:", error);
         toast.error("Failed to fetch products. Please try again later.");
@@ -29,8 +30,29 @@ function Home() {
     };
 
     fetchProducts();
-    window.scrollTo(0, 0); // Reset scroll position on page change
-  }, [page]);
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const filtered = products.filter((product) =>
+      product.name?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setFilteredProducts(filtered);
+
+    setPagination({
+      pages: Math.ceil(filtered.length / pagination.perPage),
+      perPage: pagination.perPage,
+    });
+
+    setPage(1); // reset to first page when searchTerm changes
+  }, [searchTerm, products]);
+
+  // Slice for pagination
+  const paginatedProducts = filteredProducts.slice(
+    (page - 1) * pagination.perPage,
+    page * pagination.perPage
+  );
 
   return (
     <>
@@ -44,18 +66,22 @@ function Home() {
         <CategoryCard category="Cameras & Photography" logo={camera} />
       </div>
 
-      <h1>All Items</h1>
+      <h1>{searchTerm ? `Search Results for "${searchTerm}"` : "All Items"}</h1>
       <div className="AllItems">
         <div className="item-list">
-          {products.map((product) => (
-            <ProductCard
-              key={product._id}
-              id={product._id}
-              name={product.name}
-              image={product.images[0]}
-              price={product.price}
-            />
-          ))}
+          {paginatedProducts.length > 0 ? (
+            paginatedProducts.map((product) => (
+              <ProductCard
+                key={product._id}
+                id={product._id}
+                name={product.name}
+                image={product.images[0]}
+                price={product.price}
+              />
+            ))
+          ) : (
+            <p>No products found.</p>
+          )}
         </div>
       </div>
 
@@ -64,8 +90,8 @@ function Home() {
           {[...Array(pagination.pages)].map((_, index) => (
             <button
               key={index}
-              onClick={() => setPage(index + 1)} 
-              className={page === index + 1 ? "active" : ""} 
+              onClick={() => setPage(index + 1)}
+              className={page === index + 1 ? "active" : ""}
             >
               {index + 1}
             </button>
@@ -77,5 +103,4 @@ function Home() {
 }
 
 export default Home;
-
 

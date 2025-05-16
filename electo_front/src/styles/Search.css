@@ -26,13 +26,13 @@
   color: var(--search-text);
   font-size: 1rem;
   transition: var(--search-transition);
-  box-shadow:  0 4px 5px rgba(255, 0, 0, 0.318);
+  box-shadow:  0 1px 2px rgb(43, 205, 238);
 }
 
 .search-input:focus {
   outline: none;
-  border-color: rgba(255, 0, 0, 0.284);
-  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.192);
+  border-color: rgba(43, 205, 238, 0);
+  box-shadow: 0 0 0 1px rgb(43, 205, 238);
 }
 
 .search-input::placeholder {
@@ -60,7 +60,7 @@
 }
 
 .search-input:focus + .search-button .search-icon {
-  color: rgba(255, 0, 0, 0.284);
+  color:rgb(43, 205, 238);
 }
 
 /* Responsive adjustments */
