@@ -110,7 +110,7 @@ body {
 }
 
 .pagination-controls button {
-  background-color: #007bff;
+  background-color: rgb(40, 189, 219);
   color: white;
   border: none;
   padding: 10px 18px;
@@ -126,7 +126,7 @@ body {
 }
 
 .pagination-controls button:hover:not(:disabled) {
-  background-color: #0056b3;
+  background-color: rgb(33, 156, 181);
 }
 
 .pagination-controls span {
