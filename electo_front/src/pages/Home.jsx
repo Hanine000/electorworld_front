@@ -19,9 +19,9 @@ import brand4 from "../assets/samsung.png";
 import img1 from "../assets/ps5.jpeg";
 import img2 from "../assets/app.webp";
 import img3 from "../assets/ss.jpg";
-
 import "../styles/Home.css";
 import { toast } from "react-toastify";
+
 
 function Home({ searchTerm }) {
   const [products, setProducts] = useState([]);
