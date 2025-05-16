@@ -1,6 +1,6 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import Slider from "react-slick"; 
+import Slider from "react-slick";
 import CategoryCard from "../compoents/CategoryCard.jsx";
 import ProductCard from "../pages/ProductCard.jsx";
 import Phone from "../assets/iphone.png";
@@ -12,14 +12,13 @@ import camera from "../assets/camera.jpg";
 import fastDeliveryIcon from "../assets/fast.png";
 import supportIcon from "../assets/support.png";
 import qualityIcon from "../assets/quality.png";
-import brand1 from "../assets/hp.png"; 
+import brand1 from "../assets/hp.png";
 import brand2 from "../assets/dell-.png";
 import brand3 from "../assets/apple.png";
 import brand4 from "../assets/samsung.png";
 import img1 from "../assets/ps5.jpeg";
 import img2 from "../assets/app.webp";
 import img3 from "../assets/ss.jpg";
-
 
 import "../styles/Home.css";
 import { toast } from "react-toastify";
@@ -29,22 +28,21 @@ function Home({ searchTerm }) {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [page, setPage] = useState(1);
 
- const getProductsPerPage = () => {
-  if (window.innerWidth <= 768) return 6;
-  return 8;
-};
-
-const [PRODUCTS_PER_PAGE, setProductsPerPage] = useState(getProductsPerPage());
-
-useEffect(() => {
-  const handleResize = () => {
-    setProductsPerPage(getProductsPerPage());
+  const getProductsPerPage = () => {
+    if (window.innerWidth <= 768) return 6;
+    return 8;
   };
 
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
+  const [PRODUCTS_PER_PAGE, setProductsPerPage] = useState(getProductsPerPage());
 
+  useEffect(() => {
+    const handleResize = () => {
+      setProductsPerPage(getProductsPerPage());
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -71,13 +69,11 @@ useEffect(() => {
     setPage(1);
   }, [searchTerm, products]);
 
-  
   const paginatedProducts = filteredProducts.slice(
     (page - 1) * PRODUCTS_PER_PAGE,
     page * PRODUCTS_PER_PAGE
   );
 
-  
   const carouselSettings = {
     dots: true,
     infinite: true,
@@ -89,34 +85,28 @@ useEffect(() => {
     arrows: false,
   };
 
- const carouselImages = [img1, img2, img3];
+  const carouselImages = [img1, img2, img3];
 
-
-  
   const features = [
-    { icon: fastDeliveryIcon, text: "توصيل سريع" },
-    { icon: supportIcon, text: "خدمة 24 ساعة" },
-    { icon: qualityIcon, text: "ضمان وجودة" },
+    { icon: fastDeliveryIcon, text: "Fast Delivery" },
+    { icon: supportIcon, text: "24/7 Support" },
+    { icon: qualityIcon, text: "Quality Guaranteed" },
   ];
 
-  
   const brands = [brand1, brand2, brand3, brand4];
 
   return (
     <>
-      
-    <div className="carousel-container">
-  <Slider {...carouselSettings}>
-    {carouselImages.map((img, index) => (
-      <div key={index}>
-        <img src={img} alt={`Slide ${index + 1}`} className="carousel-image" />
+      <div className="carousel-container">
+        <Slider {...carouselSettings}>
+          {carouselImages.map((img, index) => (
+            <div key={index}>
+              <img src={img} alt={`Slide ${index + 1}`} className="carousel-image" />
+            </div>
+          ))}
+        </Slider>
       </div>
-    ))}
-  </Slider>
-</div>
 
-
-      
       <div className="features-container">
         {features.map(({ icon, text }, index) => (
           <div key={index} className="feature-item">
@@ -126,7 +116,6 @@ useEffect(() => {
         ))}
       </div>
 
-      
       <h1>Categories</h1>
       <div className="categories">
         <CategoryCard category="Mobile Phones" logo={Phone} />
@@ -137,8 +126,7 @@ useEffect(() => {
         <CategoryCard category="Cameras & Photography" logo={camera} />
       </div>
 
-      
-      <h1>{searchTerm ? `Search Results for "${searchTerm}"` : "All Items"}</h1>
+      <h1>{searchTerm ? `Search Results for "${searchTerm}"` : "All Products"}</h1>
       <div className="AllItems">
         <div className="item-list">
           {paginatedProducts.length > 0 ? (
@@ -156,13 +144,12 @@ useEffect(() => {
           )}
         </div>
 
-        
         <div className="pagination-controls">
           <button
             onClick={() => setPage((p) => (p > 1 ? p - 1 : p))}
             disabled={page === 1}
           >
-            &#8592; السابق
+            &#8592; Previous
           </button>
           <span>
             {page} / {Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)}
@@ -175,13 +162,12 @@ useEffect(() => {
             }
             disabled={page === Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)}
           >
-            التالي &#8594;
+            Next &#8594;
           </button>
         </div>
       </div>
 
-      
-      <h2>Brands</h2>
+      <h2>Top Brands</h2>
       <div className="brands-container">
         {brands.map((brand, idx) => (
           <img key={idx} src={brand} alt={`Brand ${idx + 1}`} className="brand-logo" />
@@ -192,5 +178,6 @@ useEffect(() => {
 }
 
 export default Home;
+
 
 
