@@ -104,7 +104,7 @@ function Header({ searchTerm, setSearchTerm }) {
             </div>
           </Link>
 
-          {/* فاصل يدفع الأيقونات لأقصى اليمين */}
+          
           <div style={{ flexGrow: 1 }}></div>
 
           <div className="icons">

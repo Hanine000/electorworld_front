@@ -4,7 +4,7 @@ import {
   FaInstagram,
   FaTiktok,
   FaXTwitter
-} from "react-icons/fa6"; // استخدم Fa6 لأيقونة X الحديثة
+} from "react-icons/fa6"; 
 
 const Footer = () => {
   return (

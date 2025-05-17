@@ -11,14 +11,13 @@ function WelcomePage() {
   return (
     <div className="welcome-container">
     
-      {/* Logo Section */}
+     
       
         <div className="logo-text">
           <h2>ElectroWorld</h2>
         </div>
       
-
-
+      
       
       <div className="left-side">
         <video
