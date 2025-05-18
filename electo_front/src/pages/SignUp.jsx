@@ -27,7 +27,7 @@ function Signup() {
     console.log("Submitting registration:", formData); 
     try {
      
-      const response = await axios.post("http://localhost:5000/api/users", {
+      const response = await axios.post("http://localhost:5000/api/users/createUser", {
         password: formData.password,
         email: formData.email,
         username: formData.username

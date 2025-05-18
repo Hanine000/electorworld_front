@@ -12,7 +12,6 @@ import "react-toastify/dist/ReactToastify.css";
 import PDpage from "./pages/PDpage.jsx";
 import ScrollToTop from "./compoents/ScrollToTop.jsx";
 import WelcomePage from "./pages/WelcomePage.jsx";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
