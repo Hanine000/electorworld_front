@@ -126,14 +126,14 @@ function ProductsPage({ searchTerm }) {
           <div style={{ marginTop: "10px" }}>
             <input
               type="number"
-              placeholder="Min SAR"
+              placeholder="Min "
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
               style={{ width: "45%", marginRight: "5%" }}
             />
             <input
               type="number"
-              placeholder="Max SAR"
+              placeholder="Max "
               value={maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
               style={{ width: "45%" }}

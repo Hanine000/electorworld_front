@@ -58,7 +58,7 @@
 
 .product-content h2 {
   font-family: Arial, sans-serif;
-  color: rgb(43, 205, 238);
+  color: rgba(43, 205, 238, 0.711);
   margin-bottom: 20px;
   font-size: 30px;
   font-weight: 600;
