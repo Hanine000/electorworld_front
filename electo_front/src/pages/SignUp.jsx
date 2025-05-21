@@ -27,7 +27,7 @@ function Signup() {
     console.log("Submitting registration:", formData); 
     try {
      
-      const response = await axios.post("http://localhost:5000/api/users/createUser", {
+      const response = await axios.post("http://localhost:5000/api/users", {
         password: formData.password,
         email: formData.email,
         username: formData.username
@@ -39,7 +39,7 @@ function Signup() {
       }
 
       toast.success("Account created successfully!");
-      navigate("/");
+      navigate("/homepage");
     } catch (err) {
       console.error(err);
       if (err.response) {

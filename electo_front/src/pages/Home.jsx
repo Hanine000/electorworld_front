@@ -19,9 +19,10 @@ import brand4 from "../assets/samsung.png";
 import img1 from "../assets/ps5.jpeg";
 import img2 from "../assets/app.webp";
 import img3 from "../assets/ss.jpg";
-
 import "../styles/Home.css";
 import { toast } from "react-toastify";
+import "../styles/slick-theme.css";
+
 
 function Home({ searchTerm }) {
   const [products, setProducts] = useState([]);
@@ -60,19 +61,26 @@ function Home({ searchTerm }) {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    const filtered = products.filter((product) =>
-      product.name?.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+ useEffect(() => {
+  if (!searchTerm) {
+    setFilteredProducts(products);
+    return;
+  }
 
-    setFilteredProducts(filtered);
-    setPage(1);
-  }, [searchTerm, products]);
-
-  const paginatedProducts = filteredProducts.slice(
-    (page - 1) * PRODUCTS_PER_PAGE,
-    page * PRODUCTS_PER_PAGE
+  const filtered = products.filter((product) =>
+    product.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  setFilteredProducts(filtered);
+  setPage(1);
+}, [searchTerm, products]);
+
+
+  const paginatedProducts = (filteredProducts || []).slice(
+  (page - 1) * PRODUCTS_PER_PAGE,
+  page * PRODUCTS_PER_PAGE
+);
+
 
   const carouselSettings = {
     dots: true,
@@ -151,9 +159,12 @@ function Home({ searchTerm }) {
           >
             &#8592; Previous
           </button>
-          <span>
-            {page} / {Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)}
-          </span>
+         <span>
+  {page} / {filteredProducts && filteredProducts.length > 0
+    ? Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)
+    : 1}
+</span>
+
           <button
             onClick={() =>
               setPage((p) =>

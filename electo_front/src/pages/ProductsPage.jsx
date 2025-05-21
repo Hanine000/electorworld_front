@@ -66,7 +66,14 @@ function ProductsPage({ searchTerm }) {
     );
   });
 
-  const uniqueBrands = Array.from(new Set(products.map((p) => p.brand).filter(Boolean)));
+  const categoryFilteredProducts = products.filter((product) => {
+  if (!product.category) return false;
+  const productCategory = product.category.toString().toLowerCase().replace(/\s+/g, " ");
+  return normalizedCategory === "all" || productCategory === normalizedCategory;
+});
+
+const uniqueBrands = Array.from(new Set(categoryFilteredProducts.map((p) => p.brand).filter(Boolean)));
+
 
   return (
     <div className="products-page-container">

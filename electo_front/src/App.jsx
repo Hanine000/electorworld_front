@@ -15,6 +15,7 @@ import WelcomePage from "./pages/WelcomePage.jsx";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+
 function AppWrapper() {
   const location = useLocation();
   const hideUIOnPaths = ['/'];

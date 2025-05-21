@@ -37,7 +37,7 @@ function Signin() {
       }
 
       toast.success("Login successful!");
-      navigate("/");
+      navigate("/homepage");
       
     } catch (err) {
       console.error(err);
