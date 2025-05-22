@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import "../styles/ProductDetails.css";
 
 const ProductDetails = ({ product }) => {
-  const [selectedImage, setSelectedImage] = useState(product.images[0]);
+  const [selectedImage, setSelectedImage] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const [selectedColor, setSelectedColor] = useState(null);
 
   
   useEffect(() => {
