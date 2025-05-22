@@ -71,10 +71,10 @@
   }
   
   .comment-form textarea {
-  width: 100%;
+  width: 80%;
   max-width: 100%;
   min-height: 1200px;
-  margin-left: 140px; 
+  margin-left: 100px; 
   margin-right:80px;
   padding: 1rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -106,6 +106,17 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s ease;
+    margin: 0.5rem 0;
+    margin-right: 100px;
+    margin-left: 80px;
+  }
+  
+  .comment-form button[type="submit"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #ffffffc1;
+    color: var(--text-color)
+
   }
   
   .comment-form button[type="submit"]:hover {

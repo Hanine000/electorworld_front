@@ -23,7 +23,6 @@ import "../styles/Home.css";
 import { toast } from "react-toastify";
 import "../styles/slick-theme.css";
 
-
 function Home({ searchTerm }) {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -61,26 +60,24 @@ function Home({ searchTerm }) {
     window.scrollTo(0, 0);
   }, []);
 
- useEffect(() => {
-  if (!searchTerm) {
-    setFilteredProducts(products);
-    return;
-  }
+  useEffect(() => {
+    if (!searchTerm) {
+      setFilteredProducts(products);
+      return;
+    }
 
-  const filtered = products.filter((product) =>
-    product.name?.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+    const filtered = products.filter((product) =>
+      product.name?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-  setFilteredProducts(filtered);
-  setPage(1);
-}, [searchTerm, products]);
-
+    setFilteredProducts(filtered);
+    setPage(1);
+  }, [searchTerm, products]);
 
   const paginatedProducts = (filteredProducts || []).slice(
-  (page - 1) * PRODUCTS_PER_PAGE,
-  page * PRODUCTS_PER_PAGE
-);
-
+    (page - 1) * PRODUCTS_PER_PAGE,
+    page * PRODUCTS_PER_PAGE
+  );
 
   const carouselSettings = {
     dots: true,
@@ -159,19 +156,21 @@ function Home({ searchTerm }) {
           >
             &#8592; Previous
           </button>
-         <span>
-  {page} / {filteredProducts && filteredProducts.length > 0
-    ? Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)
-    : 1}
-</span>
-
+          <span>
+            {page} /{" "}
+            {Math.ceil((filteredProducts?.length || 1) / PRODUCTS_PER_PAGE)}
+          </span>
           <button
             onClick={() =>
               setPage((p) =>
-                p < Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE) ? p + 1 : p
+                p < Math.ceil((filteredProducts?.length || 1) / PRODUCTS_PER_PAGE)
+                  ? p + 1
+                  : p
               )
             }
-            disabled={page === Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)}
+            disabled={
+              page === Math.ceil((filteredProducts?.length || 1) / PRODUCTS_PER_PAGE)
+            }
           >
             Next &#8594;
           </button>
@@ -189,7 +188,4 @@ function Home({ searchTerm }) {
 }
 
 export default Home;
-
-
-
 
